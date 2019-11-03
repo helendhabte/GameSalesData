@@ -15,7 +15,11 @@ a +
   ggtitle("User Score vs. Critic Score") +
   theme(axis.title.x = element_text(size = 12),
         axis.title.y = element_text(size = 12),
-        plot.title = element_text(size = 15, hjust = 0.5))
+        plot.title = element_text(size = 15, hjust = 0.5),
+        panel.background = element_rect(fill="lightblue",
+                                        colour = "lightblue"),
+        plot.background = element_rect(fill="gray80"),
+        legend.background = element_rect(bg=))
 
 #Creating histograms
 
@@ -84,15 +88,23 @@ bp +
 #Barplot
 ggplot(data=games, aes(x=Publisher, y=Global_Sales)) + geom_bar(stat="identity")
 
-#Pie
-ggplot(data=games, aes(x="", fill=factor(Publisher))) +
-  geom_bar(width = 1) +
-  theme(axis.line = element_blank(),
-        plot.title = element_text(hjust=0.5)) + 
-  labs(fill="class", 
-       x=NULL,
-       y=NULL,
-       title="Pie Chart of Publishers")
+ggplot(data=games, aes(x=Year)) +
+  geom_bar(stat="bin", fill="cyan4", colour="cyan3") +
+    ylab("Count") +
+    ggtitle("Count by Year Released") +
+      theme(plot.title = element_text(hjust = 0.5),
+            panel.background = element_rect(fill="lightblue",
+                                            colour = "lightblue"))
+    
+ggplot(data=games, aes(x=factor(Genre))) +
+  geom_bar(stat="count", fill="dodgerblue4", colour="dodgerblue3") +
+  ylab("Count") +
+  xlab("Genre") +
+  ggtitle("Count by Year Released") +
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.background = element_rect(fill="lightblue",
+                                        colour = "lightblue"))
+
 
 
 
